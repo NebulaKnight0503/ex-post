@@ -72,7 +72,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             "/proc/{}/fd/{} => {}",
             pid,
             fd,
-            path.to_string_lossy()
+            path.file_name().unwrap().to_string_lossy()
         ));
         let mut fdinfo = fs::File::open(format!("/proc/{}/fdinfo/{}", pid, fd))?;
         thread::spawn(move || {
