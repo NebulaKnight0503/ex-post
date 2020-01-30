@@ -76,8 +76,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         ));
         let mut fdinfo = fs::File::open(format!("/proc/{}/fdinfo/{}", pid, fd))?;
         thread::spawn(move || {
+            let mut contents = String::new();
             loop {
-                let mut contents = "".to_string();
+                contents.clear();
                 if let Err(e) = fdinfo.read_to_string(&mut contents) {
                     if e.kind() == io::ErrorKind::NotFound {
                         break;
