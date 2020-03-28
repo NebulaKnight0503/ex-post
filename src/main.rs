@@ -75,6 +75,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             path.file_name().unwrap().to_string_lossy()
         ));
         let mut fdinfo = fs::File::open(format!("/proc/{}/fdinfo/{}", pid, fd))?;
+        #[allow(clippy::verbose_file_reads)]
         thread::spawn(move || {
             let mut contents = String::new();
             loop {
