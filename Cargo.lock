@@ -116,7 +116,7 @@ dependencies = [
  "proc-macro-error-attr 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)",
  "proc-macro2 1.0.24 (registry+https://github.com/rust-lang/crates.io-index)",
  "quote 1.0.7 (registry+https://github.com/rust-lang/crates.io-index)",
- "syn 1.0.42 (registry+https://github.com/rust-lang/crates.io-index)",
+ "syn 1.0.44 (registry+https://github.com/rust-lang/crates.io-index)",
  "version_check 0.9.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
@@ -183,12 +183,12 @@ dependencies = [
  "proc-macro-error 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)",
  "proc-macro2 1.0.24 (registry+https://github.com/rust-lang/crates.io-index)",
  "quote 1.0.7 (registry+https://github.com/rust-lang/crates.io-index)",
- "syn 1.0.42 (registry+https://github.com/rust-lang/crates.io-index)",
+ "syn 1.0.44 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "syn"
-version = "1.0.42"
+version = "1.0.44"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "proc-macro2 1.0.24 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -295,7 +295,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum strsim 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "8ea5119cdb4c55b55d432abb513a0429384878c15dde60cc77b1c99de1a95a6a"
 "checksum structopt 0.3.19 (registry+https://github.com/rust-lang/crates.io-index)" = "a7a7159e7d0dbcab6f9c980d7971ef50f3ff5753081461eeda120d5974a4ee95"
 "checksum structopt-derive 0.4.12 (registry+https://github.com/rust-lang/crates.io-index)" = "8fc47de4dfba76248d1e9169ccff240eea2a4dc1e34e309b95b2393109b4b383"
-"checksum syn 1.0.42 (registry+https://github.com/rust-lang/crates.io-index)" = "9c51d92969d209b54a98397e1b91c8ae82d8c87a7bb87df0b29aa2ad81454228"
+"checksum syn 1.0.44 (registry+https://github.com/rust-lang/crates.io-index)" = "e03e57e4fcbfe7749842d53e24ccb9aa12b7252dbe5e91d2acad31834c8b8fdd"
 "checksum terminal_size 0.1.13 (registry+https://github.com/rust-lang/crates.io-index)" = "9a14cd9f8c72704232f0bfc8455c0e861f0ad4eb60cc9ec8a170e231414c1e13"
 "checksum termios 0.3.2 (registry+https://github.com/rust-lang/crates.io-index)" = "6f0fcee7b24a25675de40d5bb4de6e41b0df07bc9856295e7e2b3a3600c400c2"
 "checksum textwrap 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d326610f408c7a4eb6f51c37c330e496b08506c9457c9d34287ecc38809fb060"
