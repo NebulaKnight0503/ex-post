@@ -68,7 +68,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 .template("[{elapsed_precise}] [{wide_bar:.cyan/blue}] {bytes}/{total_bytes} ({eta}) {msg}")
                 .progress_chars("#>-"),
         );
-        pb.set_message(&format!(
+        pb.set_message(format!(
             "/proc/{}/fd/{} => {}",
             pid,
             fd,
