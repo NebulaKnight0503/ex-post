@@ -16,7 +16,7 @@ fn find_fds_for_open_file(
     paths: &[PathBuf],
 ) -> Result<Vec<(u32, PathBuf)>, Box<dyn Error>> {
     let mut fds = vec![];
-    for dir_entry in fs::read_dir(format!("/proc/{}/fd/", pid))? {
+    for dir_entry in fs::read_dir(format!("/proc/{pid}/fd/"))? {
         let dir_entry = dir_entry?;
         let proc_fd_path = dir_entry.path();
         let dest_path = proc_fd_path.read_link()?;
@@ -61,7 +61,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let m = indicatif::MultiProgress::new();
 
     for (fd, path) in fds {
-        let file_size = fs::metadata(format!("/proc/{}/fd/{}", pid, fd))?.len();
+        let file_size = fs::metadata(format!("/proc/{pid}/fd/{fd}"))?.len();
         let pb = m.add(indicatif::ProgressBar::new(file_size));
         pb.set_style(
             indicatif::ProgressStyle::default_bar()
@@ -74,7 +74,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             fd,
             path.file_name().unwrap().to_string_lossy()
         ));
-        let mut fdinfo = fs::File::open(format!("/proc/{}/fdinfo/{}", pid, fd))?;
+        let mut fdinfo = fs::File::open(format!("/proc/{pid}/fdinfo/{fd}"))?;
         #[allow(clippy::verbose_file_reads)]
         thread::spawn(move || {
             let mut contents = String::new();
