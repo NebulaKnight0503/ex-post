@@ -1,5 +1,5 @@
 use std::error::Error;
-use std::io::{self, Read, Seek, SeekFrom};
+use std::io::{self, Read, Seek};
 use std::path::PathBuf;
 use std::{fs, thread, time};
 use structopt::StructOpt;
@@ -87,7 +87,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                         panic!("{:?}", e)
                     }
                 }
-                fdinfo.seek(SeekFrom::Start(0)).unwrap();
+                fdinfo.rewind().unwrap();
 
                 let pos = get_pos_from_fdinfo(&contents);
                 pb.set_position(pos);
