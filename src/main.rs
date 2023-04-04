@@ -60,12 +60,13 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let m = indicatif::MultiProgress::new();
 
+    let mut thread_handles = vec![];
     for (fd, path) in fds {
         let file_size = fs::metadata(format!("/proc/{pid}/fd/{fd}"))?.len();
         let pb = m.add(indicatif::ProgressBar::new(file_size));
         pb.set_style(
             indicatif::ProgressStyle::default_bar()
-                .template("[{elapsed_precise}] [{wide_bar:.cyan/blue}] {bytes}/{total_bytes} ({eta}) {msg}")
+                .template("[{elapsed_precise}] [{wide_bar:.cyan/blue}] {bytes}/{total_bytes} ({eta}) {msg}")?
                 .progress_chars("#>-"),
         );
         pb.set_message(format!(
@@ -76,7 +77,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         ));
         let mut fdinfo = fs::File::open(format!("/proc/{pid}/fdinfo/{fd}"))?;
         #[allow(clippy::verbose_file_reads)]
-        thread::spawn(move || {
+        thread_handles.push(thread::spawn(move || {
             let mut contents = String::new();
             loop {
                 contents.clear();
@@ -97,9 +98,12 @@ fn main() -> Result<(), Box<dyn Error>> {
                 thread::sleep(time::Duration::from_millis(100));
             }
             pb.finish_with_message("done");
-        });
+        }));
     }
-    m.join_and_clear().unwrap();
+    for h in thread_handles {
+        let _ = h.join();
+    }
+    m.clear().unwrap();
 
     Ok(())
 }
