@@ -1,9 +1,7 @@
 # ex-post-progress
 
 Gives you a progress bar for an existing program that's processing a file descriptor.
-
 Usage:
-
 ```
 $ ex-post-progress <pid> <file-paths>
 ```
